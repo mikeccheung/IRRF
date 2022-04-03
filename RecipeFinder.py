@@ -6,6 +6,7 @@ print("Welcome to the Recipe Finder, the smart way to eat.")
 
 done = 0
 ingrList = []
+shoppingList = []
 
 ingredients = str(input("What ingredients do you have on hand?\nSeperate with commas (ie. apple, cheese, butter.)\n"))
 
@@ -36,6 +37,7 @@ def getRecipeByIngredients():
     endpoint = "https://api.spoonacular.com/recipes/findByIngredients"
     r = requests.get(endpoint, params=parameters)
     results = r.json()
+    # need to log missed ingredients and append them to a shopping list
     title = results[0]['title']
     iMissed = results[0]['missedIngredientCount']
     iUsed = results[0]['usedIngredientCount']
