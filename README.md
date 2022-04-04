@@ -20,15 +20,14 @@ You will be ready to run RecipeFinder.py!
 [Spoonacular API](https://spoonacular.com/food-api/docs/)
 
 ## Tests
-Test_ingredients_module - tests with positive, negative, and null inputs
-Test_inputToList_module - ensures the ingredients list is in the accepted format and returns the input as a list
-Test_getRecipeByIngredients_module - 
+- Test_ingredients_module - tests with positive, negative, and null inputs
+- Test_inputToList_module - ensures the ingredients list is in the accepted format and returns the input as a list
+- Test_getRecipeByIngredients_module - checks for a valid response code using your API key
 
 ## How to use?
 1. Input ingredients you have on hand in the format AAA, BBB, CCC (ie. apples, butter, cheese).
-2. If you accept the recipe, it will add the recipe to your Recipe List and the missing ingredients to your Shopping List.
-3. If you reject the recipe, the Recipe Finder will look for another recipe for you.
-4. Once you are done adding recipes to your list, the Recipe Finder will print out your Recipe List and Shopping List.
+2. The Recipe Finder will look up a recipe using as many of your ingredients as possible and display it for you. If you accept the recipe, it will be added to your Recipe List and the missing ingredients will be added to your Shopping List. If you reject the recipe, the Recipe Finder will look for another recipe for you.
+3. Once you are done adding recipes to your list, the Recipe Finder will print out your Recipe List and Shopping List.
 
 ## Known Problems/Bugs
 - Rejecting recipe does not properly display a new recipe
