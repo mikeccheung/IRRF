@@ -36,7 +36,7 @@ You will be ready to run RecipeFinder.py!
 ## Future Improvements
 - Add tests with maximal coverage of cases
 - Divide project into modules
-- Break down getRecipesByIngredients into seperate functions
+- Break down getRecipesByIngredients into separate functions
 
 ## License
 MIT © [Michael Cheung](https://www.tmikec.com)
