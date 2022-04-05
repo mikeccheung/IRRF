@@ -1,22 +1,25 @@
 import requests
 import config
 
+
+recipeList = []
+
 ## ingredients_module.py - input prompt for ingredients
-def getIngredients(missingIngredients):
+def getIngredients():
     ingredients = str(input("What ingredients do you have on hand?\nSeperate with commas (ie. apple, cheese, butter.)\n"))
     parsedIngredients = (inputToList(ingredients))
-    res = getRecipeByIngredients(parsedIngredients, missingIngredients)
+    return parsedIngredients
 
 ## inputToList_module.py - changes inputs to a list
+## TODO: add input validation
 def inputToList(string):
     ingrList = list(string.split(", "))
     return ingrList
 
 
 ## getRecipeByIngredients_module.py - Calls API to find recipe with the inputted ingredients
-def getRecipeByIngredients(ingredients, missingIngredients):
-    i = 0
-    acceptReject = "reject"
+def getRecipeByIngredients(ingredients, missingIngredients, index):
+    acceptReject = "n"
     parameters = {
         'apiKey': config.api_key,
         'fillIngredients': False,
@@ -28,16 +31,15 @@ def getRecipeByIngredients(ingredients, missingIngredients):
     endpoint = "https://api.spoonacular.com/recipes/findByIngredients"
     r = requests.get(endpoint, params=parameters)
     results = r.json()
-    for x in results[0 + i]["missedIngredients"]:
+    for x in results[0 + index]["missedIngredients"]:
         missingIngredients.append(x["name"])
 
-    title = results[0 + i]['title']
+    title = results[0 + index]['title']
     print("You can make " + title)
     acceptReject = input("Would you like to add this to your Recipe List? (Y/N)\n")
-    i = i + 1
-
-    if acceptReject.lower == "y":
-        recipeList.append(x["title"])
+    acceptReject.lower()
+    if acceptReject == "y":
+        recipeList.append(title)
         return missingIngredients
     else:
         return
@@ -47,14 +49,17 @@ def getRecipeByIngredients(ingredients, missingIngredients):
 if __name__ == '__main__':
     done = 0
     missingIngredients = []
-    recipeList = []
+    index = 0
 
     print("Welcome to the Recipe Finder, the smart way to eat.")
+    ingredients = getIngredients()
 
     while done == 0:
-        getIngredients(missingIngredients);
+        getRecipeByIngredients(ingredients, missingIngredients, index);
         theyDone = input("Are you finished with your list? (Y/N)\n")
-        if theyDone.lower() == "y":
+        index += 1
+        theyDone.lower()
+        if theyDone == "y":
             done = 1
     missingIngredients = list(dict.fromkeys(missingIngredients))
     print("You are missing the following ingredients: " + ", ".join(missingIngredients))
