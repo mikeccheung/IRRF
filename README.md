@@ -1,9 +1,9 @@
-## IRRF - Mike's iRobot Recipe Finder
+## IRRF - Mike's Recipe Finder
 Eating out is expensive and coming up with different recipes every night is a headache, so why not have an application do it for you?
 Input ingredients you have in your fridge and the Recipe Finder will find a recipe to cook!
 
 ## Motivation
-This project began as my submission for the iRobot Cloud Software Team Take Home Assignemnt. It will live on as a way for me to practice CI, improve on my documentation, and develop more rigorous testing.
+This project began as my submission for a Cloud Software Team's Take-Home Assignment. It will live on as a way for me to practice CI, improve on my documentation, and develop more rigorous testing.
 
 ## Tech/framework used
 <b>Built with</b>
